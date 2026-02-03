@@ -56,7 +56,8 @@ export default function ScrollNav() {
       <motion.span
         layout
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="absolute left-[-10px] w-[2px] bg-white rounded"
+        className="absolute left-[-10px] w-[2px] bg-green rounded"
+
         style={{
           height: "1.25rem",
           top: `${items.findIndex((i) => i.id === active) * 3.25}rem`
@@ -75,15 +76,16 @@ export default function ScrollNav() {
           }
           className={`group flex items-center gap-3 transition ${
             active === item.id
-              ? "text-white"
-              : "text-white/40"
+            ? "text-green"
+            : "text-gray"
+
           }`}
         >
           <span className="text-lg font-semibold">
             {item.letter}
           </span>
 
-          <span className="text-sm opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
+          <span className="text-sm text-gray opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
             {item.id.charAt(0).toUpperCase() + item.id.slice(1)}
           </span>
         </button>
