@@ -2,51 +2,81 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import LogoLoop from "./LogoLoop";
 
 interface Logo {
   src: string;
   alt?: string;
 }
 
-interface Props {
+export default function SemicircleLogoLoop({
+  logos,
+}: {
   logos: Logo[];
-}
-
-export default function SemicircleLogoLoop({ logos }: Props) {
+}) {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const angleRef = useRef({ value: 0 });
 
   useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
+    const container = containerRef.current;
+    if (!container) return;
 
-    gsap.to(el, {
-      rotate: 360,
-      duration: 30,
+    const logoEls =
+      container.querySelectorAll<HTMLImageElement>(".logo-item");
+
+    // BIGGER ARC SETTINGS
+    const radius = 320;     // size of arc (increase for bigger arc)
+    const centerX = 520;    // move circle center off-screen right
+    const centerY = 260;    // vertical center
+
+    const updatePositions = () => {
+      logoEls.forEach((el, i) => {
+        const offset = (i / logos.length) * Math.PI;
+        const a = angleRef.current.value + offset;
+
+        const x = centerX + radius * Math.cos(a);
+        const y = centerY + radius * Math.sin(a);
+
+        gsap.set(el, {
+          x,
+          y,
+          xPercent: -50,
+          yPercent: -50,
+          position: "absolute",
+        });
+      });
+    };
+
+    // ANTICLOCKWISE continuous rotation
+    gsap.to(angleRef.current, {
+      value: "+=" + Math.PI * 2,
+      duration: 20,          // slower = smoother
       ease: "none",
       repeat: -1,
-      transformOrigin: "50% 50%",
+      onUpdate: updatePositions,
     });
-  }, []);
+
+    updatePositions();
+  }, [logos]);
 
   return (
-    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[420px] h-[420px] pointer-events-none">
-      <div
-        ref={containerRef}
-        className="relative w-full h-full"
-        style={{
-          clipPath: "inset(0 0 50% 0)",
-        }}
-      >
-        <div className="absolute inset-0 rounded-full">
-          <LogoLoop
-            logos={logos}
-            speed={60}
-            gap={40}
-            logoHeight={36}
-          />
-        </div>
-      </div>
+    <div
+      ref={containerRef}
+      className="
+        absolute right-0 top-1/2 -translate-y-1/2
+        w-[520px] h-[520px]
+        overflow-hidden
+        pointer-events-none
+        z-10
+      "
+    >
+      {logos.map((logo, i) => (
+        <img
+          key={i}
+          src={logo.src}
+          alt={logo.alt || ""}
+          className="logo-item w-12 h-12 object-contain absolute"
+        />
+      ))}
     </div>
   );
 }

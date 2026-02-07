@@ -13,12 +13,6 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import SemicircleLogoLoop from "@/components/SemicircleLogoLoop";
 
-const logos = [
-  { src: "/logos/python.svg", alt: "Python" },
-  { src: "/logos/java.svg", alt: "Java" },
-  { src: "/logos/node.svg", alt: "Node" },
-  { src: "/logos/docker.svg", alt: "Docker" },
-];
 
 const Antigravity = dynamic(
   () => import("@/components/Antigravity"),
@@ -29,6 +23,7 @@ const Antigravity = dynamic(
 export default function HomePage() {
   // ONE scroll hook only
   const { scrollYProgress } = useScroll();
+  const scrollContainerRef = useRef(null);
 
 
   // Subtle background shifts per section
@@ -44,6 +39,26 @@ export default function HomePage() {
       "#11130f", // Contact
     ]
   );
+  const logos = [
+  "css",
+  "docker",
+  "git",
+  "github",
+  "googlesummerofcode",
+  "html5",
+  "javascript",
+  "jupyter",
+  "leetcode",
+  "python",
+  "pytorch",
+  "react",
+  "tensorflow",
+].map((name) => ({
+  src: `/logos/${name}.svg`,
+}));
+
+
+
 
   return (
     <motion.div
@@ -53,8 +68,7 @@ export default function HomePage() {
       <ScrollNav />
 
       {/* HERO */}
-      <section className="relative min-h-screen flex flex-col justify-center px-6 max-w-6xl mx-auto overflow-hidden">
-      <SemicircleLogoLoop logos={logos} />
+<section className="relative min-h-screen flex flex-col justify-center px-6 max-w-6xl mx-auto overflow-hidden">
 
   {/* Antigravity background */}
   <div className="absolute inset-0 z-0 opacity-25">
@@ -67,7 +81,6 @@ export default function HomePage() {
       particleSize={1.5}
       lerpSpeed={0.05}
       color="#46ed3a"
-
       autoAnimate
       particleVariance={1}
       rotationSpeed={0}
@@ -78,46 +91,51 @@ export default function HomePage() {
     />
   </div>
 
+  {/* LOGO ARC (true background layer) */}
+  <div className="absolute inset-0 z-0 pointer-events-none">
+  <SemicircleLogoLoop logos={logos} />
+</div>
+
+
   {/* Foreground content */}
-  <div className="relative z-10">
+  <div className="relative z-10 max-w-3xl">
     <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
-  Siddhant Shitole
-</h1>
+      Siddhant Shitole
+    </h1>
+
     <TextType
-  as="h1"
-  
-  text={[
-  "Backend & Systems Engineer",
-  "AI/ML Practitioner",
-  "Builder of Scalable Solutions",
-  "Problem → Experiment → Build → Refine → Connect",
-]}
+      as="h1"
+      text={[
+        "Backend & Systems Engineer",
+        "AI/ML Practitioner",
+        "Builder of Scalable Solutions",
+        "Problem → Experiment → Build → Refine → Connect",
+      ]}
+      typingSpeed={70}
+      deletingSpeed={40}
+      pauseDuration={1500}
+      variableSpeed={{ min: 40, max: 90 }}
+      initialDelay={400}
+      loop
+      showCursor
+      cursorCharacter="|"
+      className="text-xl md:text-2xl text-green font-medium"
+    />
 
-  typingSpeed={70}
-  deletingSpeed={40}
-  pauseDuration={1500}
-  variableSpeed={{ min: 40, max: 90 }}
-  initialDelay={400}
-  loop
-  showCursor
-  cursorCharacter="|"
-  className="text-xl md:text-2xl text-green font-medium"
-/>
-
-
-
-   <ScrollReveal
-  baseOpacity={0.15}
-  blurStrength={6}
-  baseRotation={2}
-  containerClassName="mt-8"
-  textClassName="text-gray max-w-3xl leading-relaxed"
->
-  Software engineer focused on backend systems and applied AI, with a strong interest in building reliable, scalable solutions to real-world problems. My work combines solid engineering fundamentals—data structures, system design, and clean architecture—with hands-on experimentation in machine learning, computer vision, and intelligent applications. I approach projects with a problem-first mindset: understanding the core challenge, experimenting with possible solutions, and refining them into practical, production-style systems. I’m constantly learning, building, and iterating, aiming to grow into an engineer who can design robust systems and contribute meaningfully to high-impact technology.
+    <ScrollReveal
+      scrollContainerRef={scrollContainerRef}
+      baseOpacity={0.15}
+      blurStrength={6}
+      baseRotation={2}
+      containerClassName="mt-8"
+      textClassName="text-gray max-w-3xl leading-relaxed"
+    >
+      Software engineer focused on backend systems and applied AI, with a strong
+      interest in building reliable, scalable solutions to real-world problems.
+      My work combines solid engineering fundamentals—data structures, system
+      design, and clean architecture—with hands-on experimentation in machine
+      learning, computer vision, and intelligent applications.
     </ScrollReveal>
-
-
-    
   </div>
 </section>
 
