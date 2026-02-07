@@ -1,16 +1,22 @@
 "use client";
+import TextType from "@/components/TextType";
+
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollNav from "@/components/ScrollNav";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const Antigravity = dynamic(
+  () => import("@/components/Antigravity"),
+  { ssr: false }
+);
+
 
 export default function HomePage() {
   // ONE scroll hook only
   const { scrollYProgress } = useScroll();
 
-  // Horizontal PEBRC fades out early
-  const pebrcOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
-  const pebrcY = useTransform(scrollYProgress, [0, 0.15], [0, -20]);
 
   // Subtle background shifts per section
   const background = useTransform(
@@ -34,75 +40,99 @@ export default function HomePage() {
       <ScrollNav />
 
       {/* HERO */}
-      <section className="min-h-screen flex flex-col justify-center px-6 max-w-6xl mx-auto">
-        <h1 className="text-5xl md:text-6xl font-bold mb-6 text-green">
+      <section className="relative min-h-screen flex flex-col justify-center px-6 max-w-6xl mx-auto overflow-hidden">
 
-          Siddhant Shitole
-        </h1>
+  {/* Antigravity background */}
+  <div className="absolute inset-0 z-0 opacity-25">
+    <Antigravity
+      count={150}
+      magnetRadius={6}
+      ringRadius={7}
+      waveSpeed={0.4}
+      waveAmplitude={1}
+      particleSize={1.5}
+      lerpSpeed={0.05}
+      color="#7C3AED"
 
-        <p className="text-xl text-gray max-w-3xl">
+      autoAnimate
+      particleVariance={1}
+      rotationSpeed={0}
+      depthFactor={1}
+      pulseSpeed={3}
+      particleShape="capsule"
+      fieldStrength={10}
+    />
+  </div>
 
-          Software Engineer focused on backend systems and applied AI.
-        </p>
+  {/* Foreground content */}
+  <div className="relative z-10">
+    <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
+  Siddhant Shitole
+</h1>
+    <TextType
+  as="h1"
+  
+  text={[
+  "Siddhant Shitole",
+  "Backend & Systems Engineer",
+  "AI/ML Practitioner",
+  "Builder of Scalable Solutions",
+]}
 
-        {/* HORIZONTAL PEBRC */}
-        <motion.div
-          style={{ opacity: pebrcOpacity, y: pebrcY }}
-          className="flex gap-10 mt-12 text-2xl font-semibold tracking-widest"
-        >
-          {[
-            { l: "P", w: "Problem" },
-            { l: "E", w: "Experiment" },
-            { l: "B", w: "Build" },
-            { l: "R", w: "Refine" },
-            { l: "C", w: "Connect" },
-          ].map(({ l, w }) => (
-            <span key={l} className="group relative cursor-default">
-              <span className="text-gray group-hover:opacity-0 transition">
+  typingSpeed={70}
+  deletingSpeed={40}
+  pauseDuration={1500}
+  variableSpeed={{ min: 40, max: 90 }}
+  initialDelay={400}
+  loop
+  showCursor
+  cursorCharacter="|"
+  className="text-xl md:text-2xl text-green font-medium"
+/>
 
-                {l}
-              </span>
-              <span className="absolute left-0 top-0 opacity-0 group-hover:opacity-100 transition text-green text-base tracking-normal">
 
-                {w}
-              </span>
-            </span>
-          ))}
-        </motion.div>
-      </section>
+
+    <p className="text-lg md:text-xl text-gray max-w-2xl">
+      Software Engineer focused on backend systems and applied AI.
+    </p>
+
+    
+  </div>
+</section>
+
 
       {/* PROJECTS */}
       <section
         id="projects"
-        className="min-h-screen px-6 max-w-6xl mx-auto py-24 border-t border-darkgray/50"
+        className="min-h-screen px-6 max-w-6xl mx-auto py-32 border-t border-darkgray/50"
       >
 
-        <h2 className="text-3xl font-bold mb-6 text-green">Projects</h2>
+        <h2 className="text-2xl md:text-3xl font-semibold mb-10 text-green">Projects</h2>
       </section>
 
       {/* EXPERIMENTS */}
       <section
         id="experiments"
-        className="min-h-screen px-6 max-w-6xl mx-auto py-24"
+        className="min-h-screen px-6 max-w-6xl mx-auto py-32"
       >
-        <h2 className="text-3xl font-bold mb-6 text-green">Experiments</h2>
+        <h2 className="text-2xl md:text-3xl font-semibold mb-10 text-green">Experiments</h2>
       </section>
 
       {/* BLOG */}
       <section
         id="blog"
-        className="min-h-screen px-6 max-w-6xl mx-auto py-24"
+        className="min-h-screen px-6 max-w-6xl mx-auto py-32"
       >
-        <h2 className="text-3xl font-bold mb-6 text-green">Blog</h2>
+        <h2 className="text-2xl md:text-3xl font-semibold mb-10 text-green">Blog</h2>
       </section>
 
       {/* RESUME */}
       <section
         id="resume"
-        className="min-h-screen px-6 max-w-6xl mx-auto py-24"
+        className="min-h-screen px-6 max-w-6xl mx-auto py-32"
       >
-        <h2 className="text-3xl font-bold mb-6 text-green">Resume</h2>
-        <Link href="/resume" className="underline">
+        <h2 className="text-2xl md:text-3xl font-semibold mb-10 text-green">Resume</h2>
+        <Link href="/resume" className="text-white font-medium hover:text-gray transition">
           View Resume →
         </Link>
       </section>
@@ -110,10 +140,10 @@ export default function HomePage() {
       {/* CONTACT */}
       <section
         id="contact"
-        className="min-h-screen px-6 max-w-6xl mx-auto py-24"
+        className="min-h-screen px-6 max-w-6xl mx-auto py-32"
       >
-        <h2 className="text-3xl font-bold mb-6 text-green">Contact</h2>
-        <Link href="/contact" className="underline">
+        <h2 className="text-2xl md:text-3xl font-semibold mb-10 text-green">Contact</h2>
+        <Link href="/contact" className="text-white font-medium hover:text-gray transition">
           Get in touch →
         </Link>
       </section>

@@ -1,3 +1,9 @@
+export const metadata = {
+  title: "Siddhant Shitole | Software Engineer Portfolio",
+  description:
+    "Portfolio of Siddhant Shitole, showcasing backend systems, AI projects, and engineering case studies.",
+};
+
 export default function ResumePage() {
   return (
     <main className="max-w-5xl mx-auto px-6 py-24">
