@@ -1,11 +1,24 @@
 "use client";
-import TextType from "@/components/TextType";
+import TextType from "@/components/TextType";   
 
+import { useEffect, useRef, useMemo } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+import ScrollReveal from "@/components/ScrollReveal";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollNav from "@/components/ScrollNav";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import SemicircleLogoLoop from "@/components/SemicircleLogoLoop";
+
+const logos = [
+  { src: "/logos/python.svg", alt: "Python" },
+  { src: "/logos/java.svg", alt: "Java" },
+  { src: "/logos/node.svg", alt: "Node" },
+  { src: "/logos/docker.svg", alt: "Docker" },
+];
 
 const Antigravity = dynamic(
   () => import("@/components/Antigravity"),
@@ -41,6 +54,7 @@ export default function HomePage() {
 
       {/* HERO */}
       <section className="relative min-h-screen flex flex-col justify-center px-6 max-w-6xl mx-auto overflow-hidden">
+      <SemicircleLogoLoop logos={logos} />
 
   {/* Antigravity background */}
   <div className="absolute inset-0 z-0 opacity-25">
@@ -52,7 +66,7 @@ export default function HomePage() {
       waveAmplitude={1}
       particleSize={1.5}
       lerpSpeed={0.05}
-      color="#7C3AED"
+      color="#46ed3a"
 
       autoAnimate
       particleVariance={1}
@@ -73,10 +87,10 @@ export default function HomePage() {
   as="h1"
   
   text={[
-  "Siddhant Shitole",
   "Backend & Systems Engineer",
   "AI/ML Practitioner",
   "Builder of Scalable Solutions",
+  "Problem → Experiment → Build → Refine → Connect",
 ]}
 
   typingSpeed={70}
@@ -92,9 +106,16 @@ export default function HomePage() {
 
 
 
-    <p className="text-lg md:text-xl text-gray max-w-2xl">
-      Software Engineer focused on backend systems and applied AI.
-    </p>
+   <ScrollReveal
+  baseOpacity={0.15}
+  blurStrength={6}
+  baseRotation={2}
+  containerClassName="mt-8"
+  textClassName="text-gray max-w-3xl leading-relaxed"
+>
+  Software engineer focused on backend systems and applied AI, with a strong interest in building reliable, scalable solutions to real-world problems. My work combines solid engineering fundamentals—data structures, system design, and clean architecture—with hands-on experimentation in machine learning, computer vision, and intelligent applications. I approach projects with a problem-first mindset: understanding the core challenge, experimenting with possible solutions, and refining them into practical, production-style systems. I’m constantly learning, building, and iterating, aiming to grow into an engineer who can design robust systems and contribute meaningfully to high-impact technology.
+    </ScrollReveal>
+
 
     
   </div>
