@@ -8,75 +8,68 @@ interface Logo {
   alt?: string;
 }
 
-export default function SemicircleLogoLoop({
-  logos,
-}: {
-  logos: Logo[];
-}) {
+export default function SemicircleLogoLoop({ logos }: { logos: Logo[] }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const angleRef = useRef({ value: 0 });
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    if (!containerRef.current) return;
 
     const logoEls =
-      container.querySelectorAll<HTMLImageElement>(".logo-item");
+      containerRef.current.querySelectorAll<HTMLImageElement>(".logo-item");
 
-    // BIGGER ARC SETTINGS
-    const radius = 320;     // size of arc (increase for bigger arc)
-    const centerX = 520;    // move circle center off-screen right
-    const centerY = 260;    // vertical center
+// Push ellipse center far outside the screen
+const centerX = 820;   // outside right edge
+const centerY = 400;
 
-    const updatePositions = () => {
-      logoEls.forEach((el, i) => {
-        const offset = (i / logos.length) * Math.PI;
-        const a = angleRef.current.value + offset;
+// Much larger ellipse
+const radiusX = 700;   // horizontal stretch
+const radiusY = 250;   // vertical stretch
 
-        const x = centerX + radius * Math.cos(a);
-        const y = centerY + radius * Math.sin(a);
 
-        gsap.set(el, {
-          x,
-          y,
-          xPercent: -50,
-          yPercent: -50,
-          position: "absolute",
-        });
+    logoEls.forEach((el, i) => {
+      const startAngle = Math.PI / 2 - (i / logos.length) * Math.PI;
+      const obj = { angle: startAngle };
+
+      gsap.to(obj, {
+        angle: startAngle + Math.PI, // anticlockwise
+        duration: 14,
+        repeat: -1,
+        ease: "none",
+        onUpdate: () => {
+          const a = obj.angle;
+
+          const x = centerX + radiusX * Math.cos(a);
+          const y = centerY + radiusY * Math.sin(a);
+
+          gsap.set(el, {
+            x,
+            y,
+            xPercent: -50,
+            yPercent: -50,
+            position: "absolute",
+          });
+        },
+        modifiers: {
+          angle: gsap.utils.wrap(Math.PI / 2, (3 * Math.PI) / 2),
+        },
       });
-    };
-
-    // ANTICLOCKWISE continuous rotation
-    gsap.to(angleRef.current, {
-      value: "+=" + Math.PI * 2,
-      duration: 20,          // slower = smoother
-      ease: "none",
-      repeat: -1,
-      onUpdate: updatePositions,
     });
-
-    updatePositions();
   }, [logos]);
 
   return (
     <div
       ref={containerRef}
-      className="
-        absolute right-0 top-1/2 -translate-y-1/2
-        w-[520px] h-[520px]
-        overflow-hidden
-        pointer-events-none
-        z-10
-      "
+      className="absolute right-0 top-1/2 -translate-y-1/2
+                  w-[800px] h-[700px]
+                 overflow-hidden z-10 pointer-events-none"
     >
       {logos.map((logo, i) => (
         <img
-  key={i}
-  src={logo.src}
-  alt={logo.alt || ""}
-  className="logo-item w-10 h-10 object-contain brightness-0 invert drop-shadow-[0_0_6px_rgba(119,254,0,0.5)]"
-/>
-
+          key={i}
+          src={logo.src}
+          alt={logo.alt || ""}
+          className="logo-item w-14 h-14 object-contain absolute z-0 brightness-0 invert drop-shadow-[0_0_6px_rgba(119,254,0,0.5)]"
+        />
       ))}
     </div>
   );

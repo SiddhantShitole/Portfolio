@@ -96,7 +96,8 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className="min-h-screen bg-black text-white antialiased flex flex-col">
+      <body className="min-h-screen bg-black text-white antialiased">
+
         <a
   href="/"
   className={`
@@ -198,7 +199,8 @@ export default function RootLayout({
 />
 
 
-        <main className="flex-grow pt-24">{children}</main>
+        <main className="flex-grow">{children}</main>
+
 
         <Footer />
       </body>

@@ -67,10 +67,8 @@ export default function HomePage() {
     >
       <ScrollNav />
 
-      {/* HERO */}
-<section className="relative min-h-screen flex flex-col justify-center px-6">
-  <div className="max-w-6xl mx-auto w-full">
-
+    {/* HERO */}
+<section className="relative min-h-screen w-full overflow-hidden">
 
   {/* Antigravity background */}
   <div className="absolute inset-0 z-0 opacity-25">
@@ -95,50 +93,54 @@ export default function HomePage() {
 
   {/* LOGO ARC (true background layer) */}
   <div className="absolute inset-0 z-0 pointer-events-none">
-  <SemicircleLogoLoop logos={logos} />
-</div>
+    <SemicircleLogoLoop logos={logos} />
+  </div>
 
+  {/* Foreground content container */}
+  <div className="relative z-10 min-h-screen flex flex-col justify-center px-6">
+    <div className="max-w-3xl">
+      <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
+        Siddhant Shitole
+      </h1>
 
-  {/* Foreground content */}
-  <div className="relative z-10 max-w-3xl">
-    <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
-      Siddhant Shitole
-    </h1>
+      <TextType
+        as="h1"
+        text={[
+          "A Backend Developer?",
+          "A Frontend Developer?",
+          "An AI/ML Practitioner?",
+          "An Agent Developer? ",
+          "Why Not All of the Above?",
+          "Problem → Experiment → Build → Refine → Connect",
+        ]}
+        typingSpeed={70}
+        deletingSpeed={40}
+        pauseDuration={1500}
+        variableSpeed={{ min: 40, max: 90 }}
+        initialDelay={400}
+        loop
+        showCursor
+        cursorCharacter="|"
+        className="text-xl md:text-2xl text-green font-medium"
+      />
 
-    <TextType
-      as="h1"
-      text={[
-        "Backend & Systems Engineer",
-        "AI/ML Practitioner",
-        "Builder of Scalable Solutions",
-        "Problem → Experiment → Build → Refine → Connect",
-      ]}
-      typingSpeed={70}
-      deletingSpeed={40}
-      pauseDuration={1500}
-      variableSpeed={{ min: 40, max: 90 }}
-      initialDelay={400}
-      loop
-      showCursor
-      cursorCharacter="|"
-      className="text-xl md:text-2xl text-green font-medium"
-    />
-
-    <ScrollReveal
-      scrollContainerRef={scrollContainerRef}
-      baseOpacity={0.15}
-      blurStrength={6}
-      baseRotation={2}
-      containerClassName="mt-8"
-      textClassName="text-gray max-w-3xl leading-relaxed"
-    >
-      Software engineer focused on backend systems and applied AI, with a strong
-      interest in building reliable, scalable solutions to real-world problems.
-      My work combines solid engineering fundamentals—data structures, system
-      design, and clean architecture—with hands-on experimentation in machine
-      learning, computer vision, and intelligent applications.
-    </ScrollReveal>
-  </div></div>
+      <ScrollReveal
+        scrollContainerRef={scrollContainerRef}
+        baseOpacity={0.15}
+        blurStrength={6}
+        baseRotation={2}
+        containerClassName="mt-8"
+        textClassName="text-gray max-w-3xl leading-relaxed"
+      >
+        Software engineer focused on backend systems and applied AI, with a
+        strong interest in building reliable, scalable solutions to real-world
+        problems. My work combines solid engineering fundamentals—data
+        structures, system design, and clean architecture—with hands-on
+        experimentation in machine learning, computer vision, and intelligent
+        applications.
+      </ScrollReveal>
+    </div>
+  </div>
 </section>
 
 
