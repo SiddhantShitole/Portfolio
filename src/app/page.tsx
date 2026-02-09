@@ -68,7 +68,9 @@ export default function HomePage() {
       <ScrollNav />
 
       {/* HERO */}
-<section className="relative min-h-screen flex flex-col justify-center px-6 max-w-6xl mx-auto overflow-hidden">
+<section className="relative min-h-screen flex flex-col justify-center px-6">
+  <div className="max-w-6xl mx-auto w-full">
+
 
   {/* Antigravity background */}
   <div className="absolute inset-0 z-0 opacity-25">
@@ -136,7 +138,7 @@ export default function HomePage() {
       design, and clean architecture—with hands-on experimentation in machine
       learning, computer vision, and intelligent applications.
     </ScrollReveal>
-  </div>
+  </div></div>
 </section>
 
 

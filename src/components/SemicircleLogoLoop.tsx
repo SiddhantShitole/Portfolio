@@ -71,11 +71,12 @@ export default function SemicircleLogoLoop({
     >
       {logos.map((logo, i) => (
         <img
-          key={i}
-          src={logo.src}
-          alt={logo.alt || ""}
-          className="logo-item w-12 h-12 object-contain absolute"
-        />
+  key={i}
+  src={logo.src}
+  alt={logo.alt || ""}
+  className="logo-item w-10 h-10 object-contain brightness-0 invert drop-shadow-[0_0_6px_rgba(119,254,0,0.5)]"
+/>
+
       ))}
     </div>
   );
