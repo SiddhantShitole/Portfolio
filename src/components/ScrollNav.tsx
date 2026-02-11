@@ -8,7 +8,7 @@ const items = [
   { letter: "E", id: "experiments", label: "xperiments" },
   { letter: "B", id: "blog", label: "log" },
   { letter: "R", id: "resume", label: "esume" },
-  { letter: "C", id: "contact", label: "ontact" },
+  { letter: "G", id: "Get in Touch", label: "et in Touch" },
 ];
 
 export default function ScrollNav() {

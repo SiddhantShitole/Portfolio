@@ -150,7 +150,21 @@ export default function HomePage() {
         className="min-h-screen px-6 max-w-6xl mx-auto py-32 border-t border-darkgray/50"
       >
 
-        <h2 className="text-2xl md:text-3xl font-semibold mb-10 text-green">Projects</h2>
+        <motion.h2
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="text-2xl md:text-3xl font-semibold text-green"
+    >
+      Projects
+    </motion.h2>
+
+    <motion.div
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="origin-left h-[2px] w-20 bg-green mt-2 mb-12"
+    />
       </section>
 
       {/* EXPERIMENTS */}
@@ -158,7 +172,21 @@ export default function HomePage() {
         id="experiments"
         className="min-h-screen px-6 max-w-6xl mx-auto py-32"
       >
-        <h2 className="text-2xl md:text-3xl font-semibold mb-10 text-green">Experiments</h2>
+        <motion.h2
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="text-2xl md:text-3xl font-semibold text-green"
+    >
+      Experiments
+    </motion.h2>
+
+    <motion.div
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="origin-left h-[2px] w-20 bg-green mt-2 mb-12"
+    />
       </section>
 
       {/* BLOG */}
@@ -166,64 +194,104 @@ export default function HomePage() {
         id="blog"
         className="min-h-screen px-6 max-w-6xl mx-auto py-32"
       >
-        <h2 className="text-2xl md:text-3xl font-semibold mb-10 text-green">Blog</h2>
+      <motion.h2
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="text-2xl md:text-3xl font-semibold text-green"
+    >
+      Blogs
+    </motion.h2>
+
+    <motion.div
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="origin-left h-[2px] w-20 bg-green mt-2 mb-12"
+    />
       </section>
 
       {/* RESUME */}
 <section
   id="resume"
-  className="min-h-screen px-6 max-w-6xl mx-auto py-24"
+  className="relative min-h-screen px-6 max-w-6xl mx-auto py-24 overflow-hidden"
 >
-  <h2 className="text-2xl md:text-3xl font-semibold mb-12 text-green">
-    Resume
-  </h2>
 
-  <div className="grid md:grid-cols-2 gap-12 items-start">
-    
-    {/* Left: Description */}
-    <ScrollReveal
-      baseOpacity={0.2}
-      blurStrength={2}
-      baseRotation={1}
-      textClassName="text-gray leading-relaxed"
+
+  {/* FOREGROUND CONTENT */}
+  <div className="relative z-10">
+    <motion.h2
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="text-2xl md:text-3xl font-semibold text-green"
     >
-      I'm a third-year Electronics and Telecommunication engineering
-      student with a strong interest in modern technologies like AI,
-      cybersecurity, and system design. I focus on building practical
-      projects that combine software, embedded systems, and machine
-      learning to solve real-world problems.
-    </ScrollReveal>
+      Resume
+    </motion.h2>
 
-    {/* Right: Resume Card */}
-    <div className="border border-white/10 rounded-xl p-6 bg-black/40 backdrop-blur">
-      <h3 className="text-lg font-semibold mb-4">
-        Quick Highlights
-      </h3>
+    <motion.div
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="origin-left h-[2px] w-20 bg-green mt-2 mb-12"
+    />
 
-      <ul className="space-y-3 text-gray">
-        <li>• Backend & AI-focused engineering projects</li>
-        <li>• Experience with Python, Node.js, and React</li>
-        <li>• Interest in system design and cybersecurity</li>
-        <li>• Strong foundation in DSA and core CS concepts</li>
-      </ul>
-
-      <Link
-        href="/resume"
-        className="inline-block mt-6 bg-green text-black px-5 py-2.5 rounded-md font-medium hover:opacity-90 transition"
+    <div className="grid md:grid-cols-2 gap-12 items-start">
+      {/* Left text */}
+      <ScrollReveal
+        baseOpacity={0.2}
+        blurStrength={2}
+        baseRotation={1}
+        textClassName="text-gray leading-relaxed"
       >
-        View Full Resume →
-      </Link>
-    </div>
+        I'm a third-year Electronics and Telecommunication engineering
+        student focused on AI, embedded systems, and system design.
+      </ScrollReveal>
 
+      {/* Right resume card */}
+      <div className="border border-white/10 rounded-xl p-6 bg-black/40 backdrop-blur">
+        <h3 className="text-lg font-semibold mb-4">
+          Quick Highlights
+        </h3>
+
+        <ul className="space-y-3 text-gray">
+          <li>• Built AI and embedded systems projects</li>
+          <li>• Hardware + software integrated systems</li>
+          <li>• Strong DSA and electronics foundation</li>
+          <li>• VLSI, AI, and architecture focus</li>
+        </ul>
+
+        <Link
+          href="/resume"
+          className="inline-block mt-6 bg-green text-black px-5 py-2.5 rounded-md font-medium hover:opacity-90 transition"
+        >
+          View Full Resume →
+        </Link>
+      </div>
+    </div>
   </div>
 </section>
 
       {/* CONTACT */}
       <section
         id="contact"
-        className="min-h-screen px-6 max-w-6xl mx-auto py-32"
+        className="min-h-screen px-6 max-w-6xl mx-auto"
       >
-        <h2 className="text-2xl md:text-3xl font-semibold mb-10 text-green">Contact</h2>
+        <motion.h2
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="text-2xl md:text-3xl font-semibold text-green"
+    >
+      Get in Touch
+    </motion.h2>
+
+    <motion.div
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="origin-left h-[2px] w-20 bg-green mt-2 mb-12"
+    />
         <Link href="/contact" className="text-white font-medium hover:text-gray transition">
           Get in touch →
         </Link>
