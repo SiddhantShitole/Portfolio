@@ -125,20 +125,20 @@ export default function HomePage() {
       />
 
       <ScrollReveal
-        scrollContainerRef={scrollContainerRef}
-        baseOpacity={0.15}
-        blurStrength={6}
-        baseRotation={2}
-        containerClassName="mt-8"
-        textClassName="text-gray max-w-3xl leading-relaxed"
-      >
-        Software engineer focused on backend systems and applied AI, with a
-        strong interest in building reliable, scalable solutions to real-world
-        problems. My work combines solid engineering fundamentals—data
-        structures, system design, and clean architecture—with hands-on
-        experimentation in machine learning, computer vision, and intelligent
-        applications.
-      </ScrollReveal>
+  baseOpacity={0.15}
+  blurStrength={6}
+  baseRotation={2}
+  containerClassName="mt-8"
+  textClassName="text-gray max-w-3xl leading-relaxed"
+>
+  Software engineer focused on backend systems and applied AI, with a
+  strong interest in building reliable, scalable solutions to real-world
+  problems. My work combines solid engineering fundamentals—data
+  structures, system design, and clean architecture—with hands-on
+  experimentation in machine learning, computer vision, and intelligent
+  applications.
+</ScrollReveal>
+
     </div>
   </div>
 </section>
@@ -170,15 +170,53 @@ export default function HomePage() {
       </section>
 
       {/* RESUME */}
-      <section
-        id="resume"
-        className="min-h-screen px-6 max-w-6xl mx-auto py-32"
+<section
+  id="resume"
+  className="min-h-screen px-6 max-w-6xl mx-auto py-24"
+>
+  <h2 className="text-2xl md:text-3xl font-semibold mb-12 text-green">
+    Resume
+  </h2>
+
+  <div className="grid md:grid-cols-2 gap-12 items-start">
+    
+    {/* Left: Description */}
+    <ScrollReveal
+      baseOpacity={0.2}
+      blurStrength={2}
+      baseRotation={1}
+      textClassName="text-gray leading-relaxed"
+    >
+      I'm a third-year Electronics and Telecommunication engineering
+      student with a strong interest in modern technologies like AI,
+      cybersecurity, and system design. I focus on building practical
+      projects that combine software, embedded systems, and machine
+      learning to solve real-world problems.
+    </ScrollReveal>
+
+    {/* Right: Resume Card */}
+    <div className="border border-white/10 rounded-xl p-6 bg-black/40 backdrop-blur">
+      <h3 className="text-lg font-semibold mb-4">
+        Quick Highlights
+      </h3>
+
+      <ul className="space-y-3 text-gray">
+        <li>• Backend & AI-focused engineering projects</li>
+        <li>• Experience with Python, Node.js, and React</li>
+        <li>• Interest in system design and cybersecurity</li>
+        <li>• Strong foundation in DSA and core CS concepts</li>
+      </ul>
+
+      <Link
+        href="/resume"
+        className="inline-block mt-6 bg-green text-black px-5 py-2.5 rounded-md font-medium hover:opacity-90 transition"
       >
-        <h2 className="text-2xl md:text-3xl font-semibold mb-10 text-green">Resume</h2>
-        <Link href="/resume" className="text-white font-medium hover:text-gray transition">
-          View Resume →
-        </Link>
-      </section>
+        View Full Resume →
+      </Link>
+    </div>
+
+  </div>
+</section>
 
       {/* CONTACT */}
       <section

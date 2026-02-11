@@ -6,24 +6,35 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-gsap.registerPlugin(ScrollTrigger);
+type ScrollRevealProps = {
+  children: React.ReactNode;
+  scrollContainerRef?: React.RefObject<HTMLElement | null> | null;
+  enableBlur?: boolean;
+  baseOpacity?: number;
+  baseRotation?: number;
+  blurStrength?: number;
+  containerClassName?: string;
+  textClassName?: string;
+  rotationEnd?: string;
+  wordAnimationEnd?: string;
+};
 
 const ScrollReveal = ({
   children,
-  scrollContainerRef,
+  scrollContainerRef = null,
   enableBlur = true,
   baseOpacity = 0.1,
   baseRotation = 3,
   blurStrength = 4,
-  containerClassName = '',
-  textClassName = '',
-  rotationEnd = 'bottom bottom',
-  wordAnimationEnd = 'bottom bottom'
-}) => {
-  const containerRef = useRef(null);
+  containerClassName = "",
+  textClassName = "",
+  rotationEnd = "bottom bottom",
+  wordAnimationEnd = "bottom bottom",
+}: ScrollRevealProps) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   const splitText = useMemo(() => {
-    const text = typeof children === 'string' ? children : '';
+    const text = typeof children === "string" ? children : "";
     return text.split(/(\s+)/).map((word, index) => {
       if (word.match(/^\s+$/)) return word;
       return (
@@ -35,43 +46,50 @@ const ScrollReveal = ({
   }, [children]);
 
   useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
+  const el = containerRef.current;
+  if (!el) return;
 
-    const scroller = scrollContainerRef && scrollContainerRef.current ? scrollContainerRef.current : window;
+  const scroller =
+    scrollContainerRef && scrollContainerRef.current
+      ? scrollContainerRef.current
+      : window;
 
+  const ctx = gsap.context(() => {
     gsap.fromTo(
-      el,
-      { transformOrigin: '0% 50%', rotate: baseRotation },
-      {
-        ease: 'none',
-        rotate: 0,
-        scrollTrigger: {
-          trigger: el,
-          scroller,
-          start: 'top bottom',
-          end: rotationEnd,
-          scrub: true
-        }
-      }
-    );
+  el,
+  { transformOrigin: "0% 50%", rotate: baseRotation, force3D: true },
+  {
+    ease: "none",
+    rotate: 0,
+    scrollTrigger: {
+  trigger: el,
+  scroller,
+  start: "top 85%",
+  end: "top 40%",
+  scrub: true,
+},
 
-    const wordElements = el.querySelectorAll('.word');
+  }
+);
+
+
+    const wordElements = el.querySelectorAll(".word");
 
     gsap.fromTo(
       wordElements,
-      { opacity: baseOpacity, willChange: 'opacity' },
+      { opacity: baseOpacity },
       {
-        ease: 'none',
+        ease: "none",
         opacity: 1,
         stagger: 0.05,
         scrollTrigger: {
           trigger: el,
           scroller,
-          start: 'top bottom-=20%',
-          end: wordAnimationEnd,
-          scrub: true
-        }
+          start: "top 85%",
+          end: "top 40%",
+
+          scrub: true,
+        },
       }
     );
 
@@ -80,31 +98,43 @@ const ScrollReveal = ({
         wordElements,
         { filter: `blur(${blurStrength}px)` },
         {
-          ease: 'none',
-          filter: 'blur(0px)',
-          stagger: 0.05,
+          ease: "none",
+          filter: "blur(0px)",
+          stagger: 0.02,
           scrollTrigger: {
             trigger: el,
             scroller,
-            start: 'top bottom-=20%',
-            end: wordAnimationEnd,
-            scrub: true
-          }
+            start: "top 85%",
+            end: "top 40%",
+
+            scrub: true,
+          },
         }
       );
     }
+  }, containerRef);
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, [scrollContainerRef, enableBlur, baseRotation, baseOpacity, rotationEnd, wordAnimationEnd, blurStrength]);
+  ScrollTrigger.refresh();
+
+  return () => ctx.revert();
+}, [
+  scrollContainerRef,
+  enableBlur,
+  baseRotation,
+  baseOpacity,
+  rotationEnd,
+  wordAnimationEnd,
+  blurStrength,
+]);
 
   return (
-    <h2 ref={containerRef} className={`my-5 ${containerClassName}`}>
-<p className={`text-base md:text-lg leading-relaxed text-gray ${textClassName}`}>
-  {splitText}
-</p>
-    </h2>
+    <div ref={containerRef} className={`my-5 ${containerClassName}`}>
+      <p
+        className={`text-base md:text-lg leading-relaxed text-gray ${textClassName}`}
+      >
+        {splitText}
+      </p>
+    </div>
   );
 };
 

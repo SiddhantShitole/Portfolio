@@ -1,15 +1,28 @@
 export const metadata = {
-  title: "Siddhant Shitole | Software Engineer Portfolio",
+  title: "Siddhant Shitole | Resume",
   description:
-    "Portfolio of Siddhant Shitole, showcasing backend systems, AI projects, and engineering case studies.",
+    "Resume of Siddhant Shitole, backend engineer focused on scalable systems and applied AI.",
 };
 
 export default function ResumePage() {
   return (
-    <main className="max-w-5xl mx-auto px-6 py-24">
-      <h1 className="text-3xl font-bold mb-8">Resume</h1>
+    <main className="min-h-screen max-w-5xl mx-auto px-6 py-28">
+      
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10 gap-4">
+        <div>
+          <h1 className="text-3xl md:text-4xl font-bold text-white">
+            Resume
+          </h1>
+          <p className="text-gray mt-2">
+            Backend & Systems Engineer · Applied AI
+          </p>
+        </div>
 
-      <div className="border border-white/10 rounded-lg overflow-hidden">
+      </div>
+
+      {/* Resume viewer */}
+      <div className="border border-white/10 rounded-xl overflow-hidden bg-black/40 backdrop-blur">
         <iframe
           src="/resume.pdf"
           className="w-full h-[85vh]"
