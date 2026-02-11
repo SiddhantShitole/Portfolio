@@ -17,6 +17,11 @@ export default function ResumePage() {
           <p className="text-gray mt-2">
             Backend & Systems Engineer · Applied AI
           </p>
+          <p className="text-gray mb-8 leading-relaxed">
+  This page contains my complete resume, including my education,
+  technical skills, and project experience. I’m always open to
+  feedback and opportunities.
+</p>
         </div>
 
       </div>
