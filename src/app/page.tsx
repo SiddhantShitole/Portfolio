@@ -246,6 +246,13 @@ export default function HomePage() {
       >
         I'm a third-year Electronics and Telecommunication engineering
         student focused on AI, embedded systems, and system design.
+         with a strong focus on AI, embedded systems, and modern
+  system design. My academic work is complemented by hands-on projects
+  that combine hardware and software, allowing me to build practical,
+  real-world solutions. I am continuously strengthening my foundation
+  in data structures, core electronics, and computer architecture while
+  exploring advanced areas such as VLSI, machine learning, and
+  intelligent systems.
       </ScrollReveal>
 
       {/* Right resume card */}
