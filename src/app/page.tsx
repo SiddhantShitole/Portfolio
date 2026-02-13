@@ -332,12 +332,22 @@ export default function HomePage() {
       Open Contact Page
     </Link>
 
-    <a
-      href="mailto:siddhantshitole0@gmail.com"
-      className="text-white font-medium hover:text-gray transition"
-    >
-      Send Email →
-    </a>
+   <div className="flex gap-6">
+  {/* Opens default mail app */}
+  <a href="mailto:your@email.com">
+    Email Client
+  </a>
+
+  {/* Opens Gmail in browser */}
+  <a
+    href="https://mail.google.com/mail/?view=cm&fs=1&to=siddhantshitole0@gmail.com"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Open in Gmail
+  </a>
+</div>
+
   </div>
 </section>
 
