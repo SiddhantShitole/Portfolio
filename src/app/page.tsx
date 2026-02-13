@@ -292,7 +292,8 @@ export default function HomePage() {
 </section>
 
       {/* CONTACT */}
-      <section
+      {/* CONTACT */}
+<section
   id="contact"
   className="min-h-screen px-6 max-w-6xl mx-auto py-32"
 >
