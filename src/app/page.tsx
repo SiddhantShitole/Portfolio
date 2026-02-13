@@ -293,31 +293,53 @@ export default function HomePage() {
 
       {/* CONTACT */}
       <section
-        id="contact"
-        className="min-h-screen px-6 max-w-6xl mx-auto"
-      >
-       <div className="inline-block mb-12">
-  <motion.h2
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-    className="text-2xl md:text-3xl font-semibold text-green"
-  >
-    Get in Touch
-  </motion.h2>
+  id="contact"
+  className="min-h-screen px-6 max-w-6xl mx-auto py-32"
+>
+  {/* Heading */}
+  <div className="inline-block mb-8">
+    <motion.h2
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="text-2xl md:text-3xl font-semibold text-green"
+    >
+      Get in Touch
+    </motion.h2>
 
-  <motion.div
-    initial={{ scaleX: 0 }}
-    whileInView={{ scaleX: 1 }}
-    transition={{ duration: 0.6, ease: "easeOut" }}
-    className="origin-left h-[2px] w-full bg-green mt-2"
-  />
-</div>
+    <motion.div
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="origin-left h-[2px] w-full bg-green mt-2"
+    />
+  </div>
 
-        <Link href="/contact" className="text-white font-medium hover:text-gray transition">
-          Get in touch →
-        </Link>
-      </section>
+  {/* Description */}
+  <p className="text-gray max-w-xl mb-8 leading-relaxed">
+    I’m always open to discussing new opportunities, collaborations,
+    or interesting engineering problems. If you’d like to work together
+    or just want to connect, feel free to reach out.
+  </p>
+
+  {/* Actions */}
+  <div className="flex gap-6 items-center">
+    <Link
+      href="/contact"
+      className="bg-green text-black px-6 py-3 rounded-md font-medium hover:opacity-90 transition"
+    >
+      Open Contact Page
+    </Link>
+
+    <a
+      href="mailto:your@email.com"
+      className="text-white font-medium hover:text-gray transition"
+    >
+      Send Email →
+    </a>
+  </div>
+</section>
+
     </motion.div>
   );
 }
