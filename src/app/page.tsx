@@ -150,21 +150,24 @@ export default function HomePage() {
         className="min-h-screen px-6 max-w-6xl mx-auto py-32 border-t border-darkgray/50"
       >
 
-        <motion.h2
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="text-2xl md:text-3xl font-semibold text-green"
-    >
-      Projects
-    </motion.h2>
+      <div className="inline-block mb-12">
+  <motion.h2
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    className="text-2xl md:text-3xl font-semibold text-green"
+  >
+    Projects
+  </motion.h2>
 
-    <motion.div
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="origin-left h-[2px] w-20 bg-green mt-2 mb-12"
-    />
+  <motion.div
+    initial={{ scaleX: 0 }}
+    whileInView={{ scaleX: 1 }}
+    transition={{ duration: 0.6, ease: "easeOut" }}
+    className="origin-left h-[2px] w-full bg-green mt-2"
+  />
+</div>
+
       </section>
 
       {/* EXPERIMENTS */}
@@ -172,21 +175,24 @@ export default function HomePage() {
         id="experiments"
         className="min-h-screen px-6 max-w-6xl mx-auto py-32"
       >
-        <motion.h2
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="text-2xl md:text-3xl font-semibold text-green"
-    >
-      Experiments
-    </motion.h2>
+       <div className="inline-block mb-12">
+  <motion.h2
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    className="text-2xl md:text-3xl font-semibold text-green"
+  >
+    Experiments
+  </motion.h2>
 
-    <motion.div
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="origin-left h-[2px] w-20 bg-green mt-2 mb-12"
-    />
+  <motion.div
+    initial={{ scaleX: 0 }}
+    whileInView={{ scaleX: 1 }}
+    transition={{ duration: 0.6, ease: "easeOut" }}
+    className="origin-left h-[2px] w-full bg-green mt-2"
+  />
+</div>
+
       </section>
 
       {/* BLOG */}
@@ -194,21 +200,24 @@ export default function HomePage() {
         id="blog"
         className="min-h-screen px-6 max-w-6xl mx-auto py-32"
       >
-      <motion.h2
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="text-2xl md:text-3xl font-semibold text-green"
-    >
-      Blogs
-    </motion.h2>
+      <div className="inline-block mb-12">
+  <motion.h2
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    className="text-2xl md:text-3xl font-semibold text-green"
+  >
+    Blogs
+  </motion.h2>
 
-    <motion.div
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="origin-left h-[2px] w-20 bg-green mt-2 mb-12"
-    />
+  <motion.div
+    initial={{ scaleX: 0 }}
+    whileInView={{ scaleX: 1 }}
+    transition={{ duration: 0.6, ease: "easeOut" }}
+    className="origin-left h-[2px] w-full bg-green mt-2"
+  />
+</div>
+
       </section>
 
       {/* RESUME */}
@@ -220,21 +229,24 @@ export default function HomePage() {
 
   {/* FOREGROUND CONTENT */}
   <div className="relative z-10">
-    <motion.h2
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="text-2xl md:text-3xl font-semibold text-green"
-    >
-      Resume
-    </motion.h2>
+    <div className="inline-block mb-12">
+  <motion.h2
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    className="text-2xl md:text-3xl font-semibold text-green"
+  >
+    Resume
+  </motion.h2>
 
-    <motion.div
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="origin-left h-[2px] w-20 bg-green mt-2 mb-12"
-    />
+  <motion.div
+    initial={{ scaleX: 0 }}
+    whileInView={{ scaleX: 1 }}
+    transition={{ duration: 0.6, ease: "easeOut" }}
+    className="origin-left h-[2px] w-full bg-green mt-2"
+  />
+</div>
+
 
     <div className="grid md:grid-cols-2 gap-12 items-start">
       {/* Left text */}
@@ -284,21 +296,24 @@ export default function HomePage() {
         id="contact"
         className="min-h-screen px-6 max-w-6xl mx-auto"
       >
-        <motion.h2
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="text-2xl md:text-3xl font-semibold text-green"
-    >
-      Get in Touch
-    </motion.h2>
+       <div className="inline-block mb-12">
+  <motion.h2
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    className="text-2xl md:text-3xl font-semibold text-green"
+  >
+    Get in Touch
+  </motion.h2>
 
-    <motion.div
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="origin-left h-[2px] w-20 bg-green mt-2 mb-12"
-    />
+  <motion.div
+    initial={{ scaleX: 0 }}
+    whileInView={{ scaleX: 1 }}
+    transition={{ duration: 0.6, ease: "easeOut" }}
+    className="origin-left h-[2px] w-full bg-green mt-2"
+  />
+</div>
+
         <Link href="/contact" className="text-white font-medium hover:text-gray transition">
           Get in touch →
         </Link>
