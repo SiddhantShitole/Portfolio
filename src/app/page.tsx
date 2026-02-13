@@ -333,7 +333,7 @@ export default function HomePage() {
     </Link>
 
     <a
-      href="mailto:your@email.com"
+      href="mailto:siddhantshitole0@gmail.com"
       className="text-white font-medium hover:text-gray transition"
     >
       Send Email →
